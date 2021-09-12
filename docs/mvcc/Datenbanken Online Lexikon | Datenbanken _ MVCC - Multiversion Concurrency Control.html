@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html><head>
+  <title>Datenbanken Online Lexikon | Datenbanken / MVCC - Multiversion Concurrency Control  </title>
+  <!-- Skin Copyright 2017 Petko Yotov www.pmwiki.org/petko ; Skin License GNU GPLv2+ -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Heide Faeskorn-Woyke, Birgit Bertelsmeier, Nico Liß, Damian Gawenda, Andre Kasper">
+    <meta name="city" content="Gummersbach">
+    <meta name="country" content="Germany">
+    <meta name="state" content="Nordrhein-Westfalen">
+    <meta name="zipcode" content="51643">
+    <meta name="geo.position" content="51.0239;07.5625">
+    <meta name="geo.placement" content="Gummersbach Nordrhein-Westfalen">
+    <meta name="geo.region" content="DE-NRW">
+    <meta name="icbm" content="51.0239;07.5625">
+    <meta name="programmer" content="Nico Liß, Damian Gawenda">
+    <meta name="copyright" content="FH-Kön, Campus Gummersbach">
+    <meta name="distribution" content="global">
+    <meta name="robots" content="follow">
+    <meta name="revisit-after" content="">
+    <meta name="language" content="deutsch, de">
+
+  <link rel="stylesheet" href="Datenbanken%20Online%20Lexikon%20|%20Datenbanken%20_%20MVCC%20-%20Multiversion%20Concurrency%20Control_files/skin.css" type="text/css">
+  <!--HTMLHeader--><style type="text/css"><!--
+--></style><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">  <meta name="robots" content="index,follow">
+<meta name="keywords" content="Multiversion,Control-Verfahren,konkurrierende,verschiedene,Versionen,kontrolliert,manipulierenden,Datensatz,Version,verschiedenen,zeitlichen,gebracht,Version,verweist,zentralen">
+<meta name="description" content="Beim Multiversion Concurrency Control-Verfahren werden konkurrierende Zugriffe auf Datensätze (Lesen, Einfügen, Ändern, Löschen) durch verschiedene, unveränderliche Versionen dieser Datensätze kontrolliert. Bei jedem manipulierenden Zugriff (Einfügen, Ändern, Löschen) wird für den Datensatz eine neu ... ">
+
+</head>
+<body>
+  <div id="bodywrap">
+    <input id="wikileft-toggle" type="checkbox">
+    <label for="wikileft-toggle" id="wikileft-toggle-label"></label>
+
+    <input id="wikihead-search-toggle" type="checkbox">
+    <label for="wikihead-search-toggle" id="wikihead-search-toggle-label"></label>
+    <input id="wikicmds-toggle" type="checkbox">
+
+
+<!--PageHeaderFmt-->
+    <header id="wikihead">
+      <div id="wikihead-content">
+        <span id="wikilogo"><a href="https://wikis.gm.fh-koeln.de/"><img src="Datenbanken%20Online%20Lexikon%20|%20Datenbanken%20_%20MVCC%20-%20Multiversion%20Concurrency%20Control_files/edb_logo_header.png" alt="Datenbanken Online Lexikon"></a></span>
+
+        <span id="title">
+            <a class="sitetitle" href="https://wikis.gm.fh-koeln.de/">Datenbanken Online Lexikon</a>
+            <span class="subtitle">TH Köln, Campus Gummersbach</span>
+        </span>
+
+
+
+        <form id="wikihead-searchform" action="https://wikis.gm.fh-koeln.de" method="get">
+          <span class="headnav" id="wikihead-recent-changes-link">
+            <a href="https://wikis.gm.fh-koeln.de/Datenbanken/RecentChanges" accesskey="c">Aktuelle Änderungen</a> -
+          </span>
+          <span id="wikihead-searchlink"><a href="https://wikis.gm.fh-koeln.de/PmWikiDe/SiteSearch">Suchen</a>:</span>
+          <input type="hidden" name="n" value="Datenbanken.MVCC">
+          <input type="hidden" name="action" value="search">
+          <input id="wikihead-searchquery" type="search" name="q" class="inputbox searchbox" placeholder="Suchen">
+          <input id="wikihead-searchsubmitbtn" type="submit" class="inputbutton searchbutton" value="Los">
+        </form>
+      </div><!--wikiheadcontent-->
+    </header><!--wikihead-->
+<!--/PageHeaderFmt-->
+
+    <div id="wikimid">
+<!--PageLeftFmt-->
+      <nav id="wikisidebar">
+        <div id="wikileft">
+          <p class="sidehead"> <a class="wikilink" href="https://wikis.gm.fh-koeln.de/Onlinelexikon/Startseite">DB-Lexikon</a>
+</p><ul><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Onlinelexikon/Startseite">Startseite</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Datenbanken/Index">Index</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Onlinelexikon/Intern">Intern</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Onlinelexikon/Impressum">Impressum</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Onlinelexikon/Datenschutz">Datenschutz</a>
+</li></ul><p class="vspace sidehead"> <a class="wikilink" href="https://wikis.gm.fh-koeln.de/Datenbanken/Kategorien">Kategorien</a>
+</p><ul><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/Allgemeines">Allgemeines</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/AktiveDatenbanken">Aktive Datenbanken</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/Datenmodellierung">Datenmodellierung</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/E-Learning">E-Learning</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/JDBC">JDBC</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/NoSQL">NoSQL</a>
+<ul><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/Grundlagen">Grundlagen</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/KeyValue-DB">KeyValue-DB</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/Spaltenorientierte-DB">Spaltenorientierte-DB</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/Dokument-DB">Dokument-DB</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/Graphen-DB">Graphen-DB</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/Cloud-DB">Cloud-DB</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/ODBMS">ODBMS</a>
+</li></ul></li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/Mobile-DB">Mobile-DB</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/ObjektrelationaleDB">Objektrelationale DB</a>
+<ul><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/Geodatenbanken">Geodatenbanken</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/Multimediadatenbanken">Multimediadatenbanken</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/ObjektrelationalesMapping">Objektrelationales Mapping</a>
+</li></ul></li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/XML">XML-DB</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/Normalformen">Normalformen</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/Oracle-PL-SQL">Oracle-PL-SQL</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/RelationaleAlgebra">Relationale Algebra</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/Sicherheit">Sicherheit</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/Speicherstrukturen">Speicherstrukturen</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/SQL">SQL</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/Transaktionen">Transaktionen</a>
+</li><li><a class="wikilink" href="https://wikis.gm.fh-koeln.de/Category/Tuning">Tuning</a>
+</li></ul><p class="vspace sidehead"> <a class="wikilink" href="https://wikis.gm.fh-koeln.de/Datenbanken/Externe-Links">Links</a>
+</p><ul><li><a class="urllink" href="http://edb2.gm.fh-koeln.de/" rel="nofollow">edb E-Learning Portal</a>
+</li><li><a class="urllink" href="http://www.faeskorn-woyke.de/" rel="nofollow">Prof. Dr. Faeskorn-Woyke</a>
+</li><li><a class="urllink" href="http://www.gm.fh-koeln.de/~bbertels/" rel="nofollow">Prof. Dr. Birgit Bertelsmeier</a>
+</li><li><a class="urllink" href="https://www.th-koeln.de/informatik-und-ingenieurwissenschaften/" rel="nofollow">TH Köln, Campus Gummersbach</a>
+</li><li><a class="urllink" href="https://www.th-koeln.de/informatik-und-ingenieurwissenschaften/institut-fuer-informatik_29538.php" rel="nofollow">TH Köln, Institut für Informatik</a>
+</li></ul>
+
+        </div>
+      </nav>
+<!--/PageLeftFmt-->
+
+      <div id="wikibody">
+        <main>
+<!--PageActionFmt-->
+        <label for="wikicmds-toggle" id="wikicmds-toggle-label"></label>
+        <div id="wikicmds"><ul><li class="browse">      <a accesskey="" rel="nofollow" class="selflink" href="https://wikis.gm.fh-koeln.de/Datenbanken/MVCC">Anzeigen</a>
+</li><li class="edit">      <a accesskey="e" rel="nofollow" class="wikilink" href="https://wikis.gm.fh-koeln.de/Datenbanken/MVCC?action=edit">Bearbeiten</a>
+</li><li class="diff">   <a accesskey="h" rel="nofollow" class="wikilink" href="https://wikis.gm.fh-koeln.de/Datenbanken/MVCC?action=diff">Versionen</a>
+</li><li class="print">     <a accesskey="" rel="nofollow" class="wikilink" href="https://wikis.gm.fh-koeln.de/Datenbanken/MVCC?action=print">Druckansicht</a>
+</li></ul>
+</div>
+<!--/PageActionFmt-->
+<!--PageTitleFmt-->
+          <div id="wikititle">
+            <div class="pagegroup"><a href="https://wikis.gm.fh-koeln.de/Datenbanken">Datenbanken</a> /</div>
+            <h1 class="pagetitle">MVCC - Multiversion Concurrency Control </h1>
+          </div>
+<!--/PageTitleFmt-->
+
+<!--PageText-->
+<div id="wikitext">
+<p class="vspace">Beim Multiversion Concurrency Control-Verfahren werden
+ konkurrierende Zugriffe auf Datensätze (Lesen, Einfügen, Ändern, 
+Löschen) durch verschiedene, unveränderliche Versionen dieser Datensätze
+ kontrolliert. Bei jedem manipulierenden Zugriff (Einfügen, Ändern, 
+Löschen) wird für den Datensatz eine neue Version erstellt. Die 
+verschiedenen Versionen werden in einer zeitlichen Reihenfolge gebracht,
+ indem jede Version auf ihre Vorgängerversion verweist. MVCC hat sich 
+gerade bei <a class="wikilink" href="https://wikis.gm.fh-koeln.de/Datenbanken/NoSQL">NoSQL-Systemen</a> zu einer zentralen Basistechnologie entwickelt, die es ermöglicht,  konkurrierende Zugriffe auch ohne das <a class="wikilink" href="https://wikis.gm.fh-koeln.de/Datenbanken/LOCKING">Sperren</a> von Datensätzen zu koordinieren.   
+</p>
+<p class="vspace">Um die geforderten Antwortzeiten erlangen zu können 
+bei mehreren Hunderttausend oder auch Millionen von Benutzern bei 
+gleichzeitiger Verarbeitung von Datenmengen im Tera- und 
+Peta-Byte-Bereich wird eigentlich immer implizit vorausgesetzt, dass die
+ <a class="wikilink" href="https://wikis.gm.fh-koeln.de/Datenbanken/NoSQL">NoSQL-Datenbanksysteme</a>
+ auf verteilten Systemen ausgeführt werden. Also auf Servernetzen mit 
+mehreren dutzend, mehreren hundert oder tausend Servern. In diesem 
+Umfeld erweist sich der relationale <a class="wikilink" href="https://wikis.gm.fh-koeln.de/Datenbanken/Transaktion">Transaktionsansatz</a> mit <a class="wikilink" href="https://wikis.gm.fh-koeln.de/Datenbanken/LOCKING">Sperren</a>
+ von Datensätzen als Haupthindernis. Zum einen ist der Zeit- und 
+Kommunikationsaufwand für eine Übereinkunft über das Setzen und Aufheben
+ einer Sperre immens groß, zum anderen kann auf einen gesperrten 
+Datensatz nicht lesend zugegriffen werden. Und genau hier liegen die 
+Vorteile beim MVCC. Es steht immer eine aktuelle Version zur Verfügung, 
+die gelesen werden kann.
+</p>
+<div class="vspace"></div><div class="img imgcaption"><span class="rfloat frame lfloat">  <a class="urllink" href="http://wikis.gm.fh-koeln.de/wiki_db/uploads/Datenbanken/MVCC/MVCC_Lesen.jpg" rel="nofollow"><img src="Datenbanken%20Online%20Lexikon%20|%20Datenbanken%20_%20MVCC%20-%20Multiversion%20Concurrency%20Control_files/MVCC_Lesen.jpg" alt="MVCC: Lesen trotz Schreiben" title="MVCC: Lesen trotz Schreiben" width="500px"></a><br><span class="caption"><span style="font-size:83%"> <strong>MVCC: Lesen trotz Schreiben</strong> </span>  <br></span></span></div>
+<div class="vspace"></div><h4>Ablauf: </h4>
+<ul><li>Lesen
+<ul><li>Das Lesen ist vom Schreiben völlig entkoppelt, keine 
+Wartezeiten. Zu jedem Zeitpunkt steht eine aktuelle Version zum Lesen 
+bereit. 
+</li><li>Teilweise besteht in Systemen mit MVCC-Verfahren die 
+Möglichkeit, sog. "Zeitreise-Anfragen" zu formulieren, die auf der Basis
+ älterer Versionen einen konsistenten Zustand in der Vergangenheit 
+auswerten. Dies kann für Datenanalysen durchaus vorteilhaft sein.
+</li></ul></li></ul><div class="vspace"></div><div class="img imgcaption"><span class="rfloat frame lfloat">  <a class="urllink" href="http://wikis.gm.fh-koeln.de/wiki_db/uploads/Datenbanken/MVCC/MVCC_Schreiben1.jpg" rel="nofollow"><img src="Datenbanken%20Online%20Lexikon%20|%20Datenbanken%20_%20MVCC%20-%20Multiversion%20Concurrency%20Control_files/MVCC_Schreiben1.jpg" alt="MVCC: Versionskonflikt" title="MVCC: Versionskonflikt" width="500px"></a><br><span class="caption"><span style="font-size:83%"> <strong>MVCC: Versionskonflikt</strong> </span>  <br></span></span></div>
+<ul><li>Schreiben
+<ul><li> Jeder Prozess der die aktuelle Version ändert, erstellt eine 
+neue Version dieses Datensatzes mit einem Verweis auf die dafür gelesene
+ aktuelle Version.
+</li><li>Beim Transaktionsende wird die Vorgänger-Versionsnummer des 
+aktuell in dieser Transaktion geänderten Datensatzes mit seiner 
+aktuellen Versionsnummer verglichen: 
+<ul><li><strong>Vorgänger-Versionsnummer = aktuellen Versionsnummer</strong>, dann kann der geänderte Datensatz gespeichert werden. Seine Versionsnummer wird zur neuen aktuellen Versionsnummer. 
+</li><li><strong>Vorgänger-Versionsnummer &lt; aktuellen Versionsnummer</strong>, dann liegt ein Konflikt vor.
+<ul><li>Im Idealfall kann das DBMS bei Konflikten die Werte der neuen 
+Versionen vergleichen. Wurden bei den neuen Versionen unterschiedliche <a class="wikilink" href="https://wikis.gm.fh-koeln.de/Datenbanken/Attribut">Attributwerte</a>
+ (Spaltenwerte) geändert, so kann der Konflikt automatisch gelöst 
+werden, in dem die neue Version aus den neuen Attributwerten beider <a class="wikilink" href="https://wikis.gm.fh-koeln.de/Datenbanken/Transaktion">Transaktionen</a> zusammen gesetzt wird.  
+</li><li>Ein für das DBMS unlösbarer Konflikt liegt erst dann vor, wenn 
+bei einem Datensatz zumindest ein Attribut von beiden Anwendungen 
+geändert wurde. Nur in diesem Fall ist die <a class="wikilink" href="https://wikis.gm.fh-koeln.de/Datenbanken/Transaktion">Transaktion</a> abzubrechen und ein Fehler an die Anwendung/den Benutzer zu melden.
+</li></ul></li></ul></li></ul></li><li>Aufräumen
+<ul><li>In periodischen Zeitabständen müssen alte Versionen gelöscht 
+werden, damit nicht zu viel Speicherplatz für nicht mehr benötigte 
+Versionen verschwendet wird. Ein Datensatz kann alt sein, wenn er von 
+keiner Transaktion mehr verwendet wird oder wenn die Version noch älter 
+ist als die für "Zeitreise-Anfragen" benötigten Versionen.
+</li></ul></li></ul><p class="vspace">Als Versionsnummer kann eine 
+fortlaufende Transaktionsnummer verwendet werden, der 
+Transaktionsstartzeitpunkt, der Zeitpunkt der Datenmanipulation oder 
+aber auch die in verteilten Systemen an vielen Stellen erfolgreich 
+arbeitenden <a class="createlinktext" rel="nofollow" href="https://wikis.gm.fh-koeln.de/Datenbanken/VectorClocks?action=edit">Vector Clocks</a><a rel="nofollow" class="createlink" href="https://wikis.gm.fh-koeln.de/Datenbanken/VectorClocks?action=edit">?</a>. Einzige Anforderung in diesem Zusammenhang ist die strenge Monotonie der Nummern. 
+</p>
+<p class="vspace">Dadurch, dass MVCC mehrere Datensatzversionen 
+speichert, ist das Verfahren recht speicherintensiv und zwischendurch 
+muss das DBS auch noch nicht mehr benötigte Versionen löschen, das sog. 
+"Aufräumen". Diese Aufwände sind vernachlässigbar für den Vorteil 
+"jederzeit ohne Wartezeiten lesen zu können". Zumal Speicherkosten recht
+ gering sind und das Aufräumen durchaus auf Zeiten mit geringerer 
+Nutzerlast verschoben werden kann. 
+</p>
+<p class="vspace">Quellen:
+</p><ul><li>Birman, K.P.: "Maintaining Consistency in Distributed 
+Systems", Proceedings of the 5. Workshop on ACM SIGOPS European 
+Workshop, Mont Saint-Michel, France, 1992
+</li><li>Carey, M.J., Muhanna, W.A.: "The Performance of Multiversion 
+Concurreny Control Algorithm", ACM Transactions on Copmuter Systems, 
+1986
+</li><li>Edlich, Friedland, Hampe, Brauer: „NoSQL – Einstieg in die Welt
+ der nichtrelationalen Web2.0- Anwendungen“, Hanser-Verlag, 2010, ISBN 
+978-3-446-42355-8
+</li><li>Oracle: "Technical Comparision of Oracle Database vs. IBM DB2 UDB: Focus on Performance", Oracle White Paper, Februar 2002 
+</li></ul><p class="vspace">Weiterführende Literatur:
+</p><ul><li>Frey, M.: „Etablierte Datenmodelle der NoSQL-Familie und 
+ihre spezifischen Eigenschaften im Kontext von Cloud-Datenbanken“, 
+Bachelorarbeit, FH Köln, Institut für Informatik, 08/2010 
+</li><li>Kossmann, D., Kraska T.: „Data Management in the Cloud: 
+Promises, State- of-the-art and Open Questions“, in „Datenbanken und 
+Cloud-Computing“, Datenbank Spektrum, Band 10 Heft 3, Springer-Verlag, 
+12.2010, S. 121-129
+</li></ul><p class="vspace">Weiterführende Links:
+</p><ul><li>Edlich, St.: "<a class="urllink" href="http://nosql-databases.org/" rel="nofollow">Your Ultimate Guide to the Non - Relational Universe!</a>", Stand 23.03.2011
+</li><li>Grimm, R.: "<a class="urllink" href="http://www.linux-magazin.de/Online-Artikel/Funktionale-Programmierung-1-Grundzuege" rel="nofollow">Funktionale Programmierung (1): Grundzüge</a>", LINUX Online Magazin, 18.09.2009, Stand 10.04.2011
+</li><li>Grimm, R.: "<a class="urllink" href="http://www.linux-magazin.de/Online-Artikel/Funktionale-Programmierung-2-Python-funktional" rel="nofollow">Funktionale Programmierung (2): Python funktional</a>", LINUX Online Magazin, 15.10.2009, Stand 10.04.2011
+</li></ul><p class="vspace">Kategorie: <a class="categorylink" href="https://wikis.gm.fh-koeln.de/Category/NeueDB-Entwicklungen">Neue DB-Entwicklungen</a>, <a class="categorylink" href="https://wikis.gm.fh-koeln.de/Category/Grundlagen">Grundlagen</a>, <a class="categorylink" href="https://wikis.gm.fh-koeln.de/Category/NoSQL">NoSQL</a>, <a class="categorylink" href="https://wikis.gm.fh-koeln.de/Category/M">M</a>
+</p>
+</div>
+
+        </main>
+
+      </div><!--wikibody-->
+
+    </div><!--wikimid-->
+
+
+<!--PageFooterFmt-->
+    <footer id="wikifoot">
+      <div id="wikifoot-links" class="footnav">
+        <a rel="nofollow" href="https://wikis.gm.fh-koeln.de/Datenbanken/MVCC?action=edit">Bearbeiten</a> -
+        <a rel="nofollow" href="https://wikis.gm.fh-koeln.de/Datenbanken/MVCC?action=diff">Versionen</a> -
+        <a rel="nofollow" href="https://wikis.gm.fh-koeln.de/Datenbanken/MVCC?action=print" target="_blank">Druckansicht</a> -
+        <a href="https://wikis.gm.fh-koeln.de/Datenbanken/RecentChanges">Aktuelle Änderungen</a> -
+        <a href="https://wikis.gm.fh-koeln.de/PmWikiDe/SiteSearch">Suchen</a>
+      </div>
+      <div id="wikifoot-lastmod" class="lastmod">Zuletzt geändert am 11.07.2011, um 13:24:01</div>
+    </footer>
+<!--/PageFooterFmt-->
+    <div id="wikioverlay"></div>
+  </div><!--bodywrap-->
+
+  <script type="text/javascript" src="Datenbanken%20Online%20Lexikon%20|%20Datenbanken%20_%20MVCC%20-%20Multiversion%20Concurrency%20Control_files/skin.js" async=""></script>
+
+<!--HTMLFooter-->
+
+
+
+</body></html>
